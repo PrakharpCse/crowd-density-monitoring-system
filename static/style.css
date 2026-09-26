@@ -1,0 +1,365 @@
+/* ---------- GLOBAL ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+
+    /* ⭐ PREMIUM CLEAN LIGHT MODE BACKGROUND */
+    background: linear-gradient(135deg, #e6ebf5 0%, #f4f7fc 40%, #ffffff 100%);
+    background-attachment: fixed;
+
+    color: #222;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+
+    /* Smooth ANIMATED BACKGROUND */
+    animation: bgZoom 18s ease-in-out infinite alternate;
+}
+
+/* Animation Keyframes */
+@keyframes bgZoom {
+    0% { background-size: 100% 100%; }
+    100% { background-size: 108% 108%; }
+}
+
+/* Dark mode */
+body.dark {
+    background-color: #050816;
+    background-image: none;
+    color: #f1f1f1;
+}
+
+/* ---------- HEADER / NAV ---------- */
+
+header {
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(12px);
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.logo-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #4ade80, #15803d);
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.9);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Device status */
+
+.device-status {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: gray;
+}
+
+/* Buttons */
+
+.btn {
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    background: linear-gradient(to right, #ffffff, #e5e7eb);
+    color: #1d4ed8;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.1s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    opacity: 0.9;
+}
+
+/* Dark mode button style */
+body.dark .btn {
+    background: linear-gradient(to right, #111827, #1f2937);
+    color: #e5e7eb;
+}
+
+/* ---------- ALERT BANNER ---------- */
+
+.alert-banner {
+    padding: 0.6rem;
+    background: rgba(255, 193, 7, 0.9);
+    color: #222;
+    font-weight: 600;
+}
+
+.alert-banner.danger {
+    background: rgba(220, 53, 69, 0.95);
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+
+main {
+    margin-top: 1.8rem;
+    padding: 0 1rem 5rem 1rem;
+}
+
+/* COMMON CARD STYLE */
+
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -60%;
+    background: conic-gradient(from 180deg, #38bdf8, #4ade80, #fbbf24, #f97373, #38bdf8);
+    opacity: 0.16;
+    z-index: -1;
+}
+
+/* Dark mode card */
+body.dark .card {
+    background: rgba(17, 24, 39, 0.95);
+}
+
+/* ---------- TOP CARDS ---------- */
+
+.cards-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+}
+
+.gate, .crowd, .capacity {
+    width: 240px;
+}
+
+.entry h2 { color: green; }
+.exit h2 { color: red; }
+.crowd h2 { color: #1d4ed8; }
+body.dark .crowd h2 { color: #e5e7eb; }
+
+.gate p, .crowd p, .capacity p {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Capacity bar */
+
+.capacity-bar {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.4);
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+#capacityBarFill {
+    width: 0%;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(to right, #22c55e, #f97316, #ef4444);
+    transition: width 0.4s ease;
+}
+
+/* ---------- FLOW CARD ---------- */
+
+.flow-row {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.flow-card {
+    width: 320px;
+}
+
+.flow-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.flow-icon {
+    font-size: 2.2rem;
+}
+
+.flow-up { color: #22c55e; }
+.flow-down { color: #ef4444; }
+.flow-steady { color: #facc15; }
+
+/* ---------- CHARTS ---------- */
+
+.charts-row {
+    margin-top: 2.2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+}
+
+.chart-card {
+    width: 360px;
+    max-width: 95%;
+}
+
+/* ---------- ACTIONS, ESP PANEL, QR ---------- */
+
+.actions-row {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.esp-panel h3 { margin-top: 0; }
+
+.qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+#qrcode {
+    background: white;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+/* ---------- HISTORY SECTION ---------- */
+
+.history-row {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.history-card {
+    width: 360px;
+}
+
+.history-box {
+    width: 100%;
+    height: 200px;
+    overflow-y: auto;
+    background: rgba(255,255,255,0.8);
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    white-space: pre-line;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+body.dark .history-box {
+    background: rgba(30,30,30,0.9);
+    color: white;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    background: rgba(15, 23, 42, 0.95);
+    color: white;
+    padding: 0.8rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.85rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 0.6rem;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    main { padding-bottom: 6rem; }
+
+    .cards-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .charts-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .actions-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 92%;
+        max-width: 360px;
+    }
+}

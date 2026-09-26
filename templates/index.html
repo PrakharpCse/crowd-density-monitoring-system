@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowd Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <span class="logo-dot"></span>
+            <div>
+                <h1>Crowd Density Detector</h1>
+                <p class="subtitle">Real-time crowd monitoring dashboard</p>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="device-status">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Checking…</span>
+            </div>
+
+            <button id="themeToggle" class="btn">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <div id="alertBanner" class="alert-banner hidden">
+        <span id="alertText"></span>
+    </div>
+
+    <main>
+
+    
+        <section class="cards-row">
+            <div class="gate entry card">
+                <h2>Entry Gate</h2>
+                <p id="entryCount">0</p>
+            </div>
+
+            <div class="gate exit card">
+                <h2>Exit Gate</h2>
+                <p id="exitCount">0</p>
+            </div>
+
+            <div class="crowd card">
+                <h2>Live Crowd</h2>
+                <p id="crowdCount">0</p>
+            </div>
+
+            <div class="capacity card">
+                <h2>Hall Capacity</h2>
+                <p id="capacityPercent">0%</p>
+                <div class="capacity-bar">
+                    <div id="capacityBarFill"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CROWD FLOW -->
+        <section class="flow-row">
+            <div class="flow-card card">
+                <h3>Crowd Flow</h3>
+                <div class="flow-content">
+                    <span id="flowIcon" class="flow-icon">⬍</span>
+                    <span id="flowText">Stable</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE CHARTS -->
+        <section class="charts-row">
+            <div class="chart-card">
+                <h3>Crowd Trend (Live)</h3>
+                <canvas id="crowdChart"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Gate Activity (Entry vs Exit)</h3>
+                <canvas id="gateChart"></canvas>
+            </div>
+        </section>
+
+        <!-- ACTIONS + QR + ESP Info -->
+        <section class="actions-row">
+            <button id="downloadCsv" class="btn">⬇ Download Today’s Report (CSV)</button>
+
+            <div class="esp-panel card">
+                <h3>ESP32 Device Info</h3>
+                <p id="espStatus">Status: —</p>
+                <p id="lastUpdate">Last update: —</p>
+                <p id="avgCrowd">Average crowd: —</p>
+            </div>
+
+            <div class="qr-section">
+                <button id="generateQr" class="btn">📱 Generate QR for Mobile View</button>
+                <div id="qrcode"></div>
+            </div>
+        </section>
+
+        <!-- HISTORY LOG -->
+        <section class="history-row">
+            <div class="card history-card">
+                <h3>Crowd History Log</h3>
+
+                <button id="downloadHistory" class="btn">
+                    ⬇ Download Full History (TXT)
+                </button>
+
+                <div id="historyBox" class="history-box">
+                    Loading history…
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Crowd Density Detector • Mini Project</p>
+    </footer>
+
+    <audio id="alertSound" src="{{ url_for('static', filename='alert.mp3') }}"></audio>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
