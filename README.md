@@ -43,3 +43,34 @@ Crowd Dashboard/
 │       └── img1.jpeg
 └── templates/
     └── index.html
+
+## Hardware Implementation & Testing
+
+The system was physically assembled and tested using an ESP32, two IR sensor modules, LEDs, a buzzer, breadboard, and jumper wires.
+
+### Hardware Configuration
+
+| Component | ESP32 Pin |
+|---|---|
+| Entry IR Sensor | GPIO 26 |
+| Exit IR Sensor | GPIO 27 |
+| Entry LED | GPIO 2 |
+| Exit LED | GPIO 33 |
+| Buzzer | GPIO 25 |
+
+### Tested Workflow
+
+```text
+Entry / Exit Detection
+        ↓
+IR Sensors
+        ↓
+ESP32
+        ↓
+Wi-Fi
+        ↓
+Flask API
+        ↓
+Crowd Calculation
+        ↓
+Web Dashboard
